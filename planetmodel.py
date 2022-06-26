@@ -27,6 +27,6 @@ class Planet:
         y = self.center_y
         for i in range(self.resolution):
             ang = 2*pi*i / self.resolution
-            pos_x = cos(ang)*self.orbit_radius + y
-            pos_y = sin(ang)*self.orbit_radius + x
+            pos_x = cos(ang)*self.orbit_radius + self.center_y
+            pos_y = sin(ang)*self.orbit_radius + self.center_x
             self.points.append((pos_x, pos_y))

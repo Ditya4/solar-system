@@ -6,11 +6,9 @@ import planetview as view
 
 
 def main():
-    WINDOW_WIDTH = 1000
-    WINDOW_HEIGHT = 850
+    WINDOW_WIDTH = 900
+    WINDOW_HEIGHT = 900
     RESOLUTION_COEFICIENT = 5
-    CENTER_X = 400
-    CENTER_Y = 400
     planets = []
     run = True
     clock = pygame.time.Clock()
@@ -22,7 +20,7 @@ def main():
     planets_colors = ["yellow", "red", "green", "blue", "brown", "cyan",
                       "white", "pink", "maroon"]
     for planet_index in range(len(planets_radiuses)):
-        planet_model = model.Planet(CENTER_X, CENTER_Y,
+        planet_model = model.Planet(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2,
                                     planets_orbit_radiuses[planet_index],
                                     (planets_orbit_radiuses[planet_index] *
                                      RESOLUTION_COEFICIENT))
