@@ -23,8 +23,6 @@ class Planet:
         self.calculate_points()
 
     def calculate_points(self):
-        x = self.center_x
-        y = self.center_y
         for i in range(self.resolution):
             ang = 2*pi*i / self.resolution
             pos_x = cos(ang)*self.orbit_radius + self.center_y
