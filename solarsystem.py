@@ -1,13 +1,17 @@
 import pygame
-from random import randint
+from random import randint, choice
 
 import planetmodel as model
 import planetview as view
 
 
 def main():
-    WINDOW_WIDTH = 900
-    WINDOW_HEIGHT = 900
+    """RESOLUTION_COEFICIENT -- how many points(redraws) is gonna be in planet
+    one circle.
+
+    """
+    WINDOW_WIDTH = 850
+    WINDOW_HEIGHT = 850
     RESOLUTION_COEFICIENT = 5
     planets = []
     run = True
@@ -19,11 +23,13 @@ def main():
     planets_orbit_radiuses = [30, 60, 90, 140, 180, 240, 310, 350, 420]
     planets_colors = ["yellow", "red", "green", "blue", "brown", "cyan",
                       "white", "pink", "maroon"]
+    orbit_direction = ["forward", "backward"]
     for planet_index in range(len(planets_radiuses)):
         planet_model = model.Planet(WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2,
                                     planets_orbit_radiuses[planet_index],
                                     (planets_orbit_radiuses[planet_index] *
-                                     RESOLUTION_COEFICIENT))
+                                     RESOLUTION_COEFICIENT),
+                                    choice(orbit_direction))
         planet_points = planet_model.points
         planets.append(view.Planet(planets_radiuses[planet_index],
                                    planets_colors[planet_index],

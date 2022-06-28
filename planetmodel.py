@@ -9,21 +9,28 @@ class Planet:
 
     """
 
-    def __init__(self, center_x, center_y, orbit_radius, resolution):
+    def __init__(self, center_x, center_y, orbit_radius, resolution, orbit_direction):
         """center_x, center_y -- center of a sun
         radius -- planet orbit radius
         resolution -- amount of points in which planet will be draw
-        !!! probable it should be some function which is depended from radius
         """
         self.center_x = center_x
         self.center_y = center_y
         self.orbit_radius = orbit_radius
         self.resolution = resolution
         self.points = []
+        self.orbit_direction = orbit_direction
         self.calculate_points()
 
+    def choose_direction(self):
+        if self.orbit_direction == "forward":
+            return 0, self.resolution, 1
+        else:
+            return self.resolution - 1, -1, -1
+
     def calculate_points(self):
-        for i in range(self.resolution):
+        start, stop, step = self.choose_direction()
+        for i in range(start, stop, step):
             ang = 2*pi*i / self.resolution
             pos_x = cos(ang)*self.orbit_radius + self.center_y
             pos_y = sin(ang)*self.orbit_radius + self.center_x
